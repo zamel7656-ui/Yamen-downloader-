@@ -1,0 +1,1 @@
+{"free_months":3,"free_period_on":true,"free_since":"2026-11-26","free_until":"2027-02-26","note":"Owner decides the duration (months, 0 = unlimited). Change it from the Admin panel (Kill tab). free_until is kept for OLD clients (v6.0) that only know the date: 2099-12-31 while unlimited, today when OFF.","renewable":true}
