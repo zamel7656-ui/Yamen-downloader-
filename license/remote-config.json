@@ -1,1 +1,45 @@
-{"programs":{"tv-player":{"by_serial":{},"features":{},"settings":{"activation_page_url":"https://muse.ai/s/tf-yl-yamen-player-is6jxdxuxuxjpxdi/7X6SZahSlZp4T6AFjh-AJIxoftpRiWf_rEUGbsWZp1c","announcement":"","audio_default_lang":"ar","autoplay_next":true,"azan_enabled":false,"browser_homepage":"","cors_proxy":"","custom_background":"","default_language":"ar","default_theme":"3d-blue","epg_enabled":true,"force_update":false,"kids_pin_required":false,"maintenance_message":"","maintenance_mode":false,"max_quality":"4K","min_version":"","prayer_enabled":true,"sleep_timeout_min":30,"speed_test_enabled":true,"subtitle_default_lang":"ar","theme_packs":{},"tmdb_language":"ar","translate_descriptions":true,"update_url":"","volume_boost_max":150}}},"updated_at":"2026-11-26"}
+{
+  "by_device": {},
+  "by_serial": {},
+  "default": {
+    "block_ads_default": true,
+    "default_speed_kbps": 0,
+    "max_threads": 8
+  },
+  "programs": {
+    "tv-player": {
+      "by_serial": {},
+      "features": {},
+      "settings": {
+        "activation_page_url": "https://zamel7656-ui.github.io/Yamen-downloader-/activate.html",
+        "announcement": "",
+        "audio_default_lang": "ar",
+        "autoplay_next": true,
+        "azan_enabled": false,
+        "browser_homepage": "",
+        "cors_proxy": "",
+        "custom_background": "",
+        "default_language": "ar",
+        "default_theme": "3d-blue",
+        "epg_enabled": true,
+        "force_update": false,
+        "kids_pin_required": false,
+        "maintenance_message": "",
+        "maintenance_mode": false,
+        "max_quality": "4K",
+        "min_version": "",
+        "prayer_enabled": true,
+        "sleep_timeout_min": 30,
+        "speed_test_enabled": true,
+        "subtitle_default_lang": "ar",
+        "theme_packs": {},
+        "tmdb_language": "ar",
+        "translate_descriptions": true,
+        "update_url": "",
+        "volume_boost_max": 150
+      }
+    }
+  },
+  "signature": "fd96f16848e41cf14e47850a6f29d9d2c1b2f99d7966a857b7a1043651f7d90ca4ac5b49bdf5f0fb0cd786f669361355d0113ce2dae2cdf055a94bba11b2f60c",
+  "updated_at": "2026-11-27"
+}

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>تفعيل Yamen — Yamen Tech</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: Tahoma, Arial, sans-serif;
+    background: #060d1f;
+    background-image: radial-gradient(ellipse at 50% 0%, #12275e 0%, #060d1f 65%);
+    color: #eaf4ef; min-height: 100vh; padding: 24px 16px;
+  }
+  .card {
+    max-width: 560px; margin: 0 auto; background: #0a1a3f;
+    border: 2px solid #1e5bff; border-radius: 20px; padding: 28px 24px;
+    box-shadow: 0 0 40px rgba(30, 91, 255, .35), 0 12px 40px rgba(0,0,0,.6);
+  }
+  .wordmark {
+    text-align: center; font-size: 46px; font-weight: 900; letter-spacing: 3px;
+    background: linear-gradient(180deg, #38e1ff 0%, #1e5bff 55%, #0a1a3f 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    text-shadow: 0 0 24px rgba(56, 225, 255, .35);
+  }
+  .sub { text-align: center; color: #a8cfbf; font-size: 17px; margin: 6px 0 22px; }
+  h1 { font-size: 24px; text-align: center; margin-bottom: 6px; }
+  .hint { text-align: center; color: #a8cfbf; font-size: 15px; line-height: 1.9; margin-bottom: 20px; }
+  label { display: block; font-size: 17px; font-weight: 700; margin: 14px 0 6px; }
+  input {
+    width: 100%; font-size: 20px; padding: 14px 16px; border-radius: 12px;
+    border: 2px solid #1e5bff; background: #060d1f; color: #fff;
+    font-family: Tahoma, Arial, sans-serif; text-align: center; letter-spacing: 2px;
+  }
+  input:focus { outline: none; border-color: #38e1ff; box-shadow: 0 0 16px rgba(56,225,255,.5); }
+  .ref {
+    margin-top: 18px; background: #060d1f; border: 1px dashed #1e5bff; border-radius: 12px;
+    padding: 12px; text-align: center; font-size: 16px; line-height: 2;
+  }
+  .ref b { color: #38e1ff; font-size: 20px; letter-spacing: 2px; }
+  .btn {
+    display: block; width: 100%; text-align: center; text-decoration: none;
+    font-size: 20px; font-weight: 800; padding: 15px; border-radius: 14px; margin-top: 14px;
+    cursor: pointer; border: none; font-family: Tahoma, Arial, sans-serif;
+  }
+  .btn-wa { background: #25d366; color: #062b16; box-shadow: 0 0 20px rgba(37,211,102,.4); }
+  .btn-mail { background: linear-gradient(135deg, #1e5bff, #38e1ff); color: #fff; box-shadow: 0 0 20px rgba(30,91,255,.45); }
+  .btn:active { transform: scale(.98); }
+  .note { margin-top: 20px; font-size: 14px; line-height: 2; color: #a8cfbf; text-align: center; }
+  .err { color: #ff9d9d; font-size: 15px; text-align: center; margin-top: 8px; min-height: 22px; }
+  .foot { text-align: center; margin-top: 22px; font-size: 13px; color: #5f7fa8; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="wordmark">YAMEN</div>
+  <div class="sub">Yamen Tech — تفعيل البرامج</div>
+  <h1 id="title">تفعيل الجهاز</h1>
+  <p class="hint">اكتب السيريال اللي معاك، وابعت الطلب للأدمن — أول ما يفعّله من اللوحة، جهازك هيتفعّل لوحده من غير ما تعمل أي حاجة تانية.</p>
+
+  <label for="device">كود الجهاز</label>
+  <input id="device" type="text" placeholder="مثال: TV-ABC123" autocomplete="off">
+
+  <label for="serial">السيريال (16 حرف)</label>
+  <input id="serial" type="text" placeholder="XXXX-XXXX-XXXX-XXXX" autocomplete="off" maxlength="19">
+  <div class="err" id="err"></div>
+
+  <div class="ref">رقم المرجع: <b id="ref">—</b><br><span style="font-size:13px;color:#a8cfbf">اكتب رقم المرجع ده لو كلمت الدعم — بيه يعرف طلبك على طول.</span></div>
+
+  <a class="btn btn-wa" id="btn-wa" href="#">إرسال الطلب واتساب</a>
+  <a class="btn btn-mail" id="btn-mail" href="#">إرسال الطلب بالإيميل</a>
+
+  <p class="note">لو معاك سيريال فعّال، تقدر تدخّله في التطبيق نفسه من شاشة التفعيل — من غير ما تبعت أي حاجة.<br>الدعم: واتساب 01146367656 — zamel7656@gmail.com</p>
+  <div class="foot">Yamen Tech — جميع الحقوق محفوظة</div>
+</div>
+<script>
+(function () {
+  var WA = "201146367656";
+  var EMAIL = "zamel7656@gmail.com";
+  var PROGRAMS = {
+    "TV": "YZ Player — الشاشات",
+    "YP": "YZ Player — موبايل",
+    "YD": "Yamen Downloader",
+    "YK": "Yamen Kids"
+  };
+  function q(name) {
+    var m = location.search.match(new RegExp("[?&]" + name + "=([^&]*)"));
+    return m ? decodeURIComponent(m[1].replace(/\+/g, " ")) : "";
+  }
+  function programOf(device, param) {
+    if (param) return param;
+    var p = (device || "").split("-")[0].toUpperCase();
+    return PROGRAMS[p] || "Yamen";
+  }
+  function fmtSerial(v) {
+    var a = (v || "").toUpperCase().replace(/[^A-Z0-9]/g, "").slice(0, 16);
+    return a.replace(/(.{4})(?=.)/g, "$1-");
+  }
+  function refOf(device, serial) {
+    var s = (device || "") + "|" + (serial || "") + "|" + new Date().toISOString().slice(0, 10);
+    var h = 5381;
+    for (var i = 0; i < s.length; i++) h = ((h << 5) + h + s.charCodeAt(i)) >>> 0;
+    return "YAM-" + String(100000 + (h % 900000));
+  }
+  var deviceEl = document.getElementById("device");
+  var serialEl = document.getElementById("serial");
+  var refEl = document.getElementById("ref");
+  var errEl = document.getElementById("err");
+  var titleEl = document.getElementById("title");
+  var waBtn = document.getElementById("btn-wa");
+  var mailBtn = document.getElementById("btn-mail");
+  var programParam = q("program");
+  deviceEl.value = q("device") || "";
+  serialEl.value = fmtSerial(q("serial") || "");
+  function refresh() {
+    var device = deviceEl.value.trim().toUpperCase();
+    var serial = fmtSerial(serialEl.value);
+    if (serialEl.value !== serial) serialEl.value = serial;
+    var prog = programOf(device, programParam);
+    titleEl.textContent = "تفعيل " + prog;
+    document.title = "تفعيل " + prog + " — Yamen Tech";
+    refEl.textContent = (device || serial) ? refOf(device, serial) : "—";
+    var msg = prog + " — طلب تفعيل\nالجهاز: " + (device || "—") + "\nالسيريال: " + (serial || "—") + "\nرقم المرجع: " + refEl.textContent;
+    waBtn.href = "https://wa.me/" + WA + "?text=" + encodeURIComponent(msg);
+    mailBtn.href = "mailto:" + EMAIL + "?subject=" + encodeURIComponent("طلب تفعيل — " + (device || prog)) + "&body=" + encodeURIComponent(msg);
+  }
+  serialEl.addEventListener("input", refresh);
+  deviceEl.addEventListener("input", refresh);
+  function check(e) {
+    var serial = fmtSerial(serialEl.value);
+    if (serial.replace(/-/g, "").length !== 16) {
+      errEl.textContent = "السيريال لازم يكون 16 حرف — كمّل السيريال الأول.";
+      e.preventDefault();
+    } else {
+      errEl.textContent = "";
+    }
+  }
+  waBtn.addEventListener("click", check);
+  mailBtn.addEventListener("click", check);
+  refresh();
+})();
+</script>
+</body>
+</html>
